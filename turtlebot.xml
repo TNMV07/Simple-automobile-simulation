@@ -1,0 +1,83 @@
+<mujoco model="turtlebot">
+
+  <option timestep="0.002" gravity="0 0 -9.81"/>
+
+  <worldbody>
+    <!-- Ground -->
+    <geom type="plane" size="10 10 0.1"
+          friction="2 0.1 0.1"
+          rgba="0.9 0.9 0.9 1"/>
+
+    <!-- OBSTACLES -->
+    <body pos="1 0 0.1">
+      <geom type="box" size="0.2 0.2 0.2" rgba="1 0 0 1"/>
+    </body>
+
+    <body pos="2 0.5 0.1">
+      <geom type="box" size="0.2 0.2 0.2" rgba="1 0 0 1"/>
+    </body>
+
+    <body pos="2 -0.5 0.1">
+      <geom type="box" size="0.2 0.2 0.2" rgba="1 0 0 1"/>
+    </body>
+
+    <body pos="3 0 0.1">
+      <geom type="sphere" size="0.3 0.3 0.3" rgba="1 0 0 1"/>
+    </body>
+
+    <!-- ROBOT -->
+    <body name="base" pos="0 0 0.05">
+      <joint type="free"/>
+
+      <!-- body -->
+      <geom type="cylinder"
+            size="0.15 0.05"
+            mass="3"
+            rgba="0 0 1 1"/>
+
+      <!-- LEFT WHEEL -->
+      <body pos="0 0.16 0">
+        <joint name="left_joint"
+               type="hinge"
+               axis="0 1 0"
+               damping="2"/>
+        <geom type="cylinder"
+              size="0.05 0.02"
+              euler="90 0 0"
+              friction="3 0.1 0.1"
+              mass="0.3"
+              rgba="1 0 0 1"/>
+      </body>
+
+      <!-- RIGHT WHEEL -->
+      <body pos="0 -0.16 0">
+        <joint name="right_joint"
+               type="hinge"
+               axis="0 1 0"
+               damping="2"/>
+        <geom type="cylinder"
+              size="0.05 0.02"
+              euler="90 0 0"
+              friction="3 0.1 0.1"
+              mass="0.3"
+              rgba="1 0 0 1"/>
+      </body>
+
+      <!-- caster -->
+      <body pos="-0.15 0 -0.02">
+        <geom type="sphere"
+              size="0.03"
+              mass="0.1"
+              friction="0.2 0.01 0.01"
+              rgba="0 1 0 1"/>
+      </body>
+
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor joint="left_joint" ctrlrange="-10 10"/>
+    <motor joint="right_joint" ctrlrange="-10 10"/>
+  </actuator>
+
+</mujoco>
