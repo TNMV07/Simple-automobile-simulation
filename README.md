@@ -22,3 +22,6 @@ Make sure you have Python installed on your system. You will also need to instal
 
 ```bash
 pip install mujoco & numpy
+To run the code you can use this to run in terminal or you can click the run button.
+```bash
+python test_mujoco.py
