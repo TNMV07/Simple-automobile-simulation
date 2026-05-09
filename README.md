@@ -21,4 +21,4 @@ This project demonstrates the power of Generative AI (LLMs like ChatGPT, Gemini,
 Make sure you have Python installed on your system. You will also need to install the required dependencies:
 
 ```bash
-pip install mujoco numpy
+pip install mujoco & numpy
